@@ -1,0 +1,74 @@
+﻿<Project>
+  
+  <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <WarningsAsErrors>nullable</WarningsAsErrors>
+    <ImplicitUsings>true</ImplicitUsings>
+    <LangVersion>Latest</LangVersion>
+    <DebugType>embedded</DebugType>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IsPackable>true</IsPackable>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <ContentTargetFolders>contentFiles</ContentTargetFolders>
+    <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    <NoWarn>CS8021</NoWarn>
+    <NoBuild>true</NoBuild>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
+    
+    <PackageId>StringSyntaxPolyfill</PackageId>
+    <Product>$(PackageId)</Product>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>StringSyntaxPolyfill,StringSyntaxAttribute,Polyfill</PackageTags>
+    <Description>A source code package which makes StringSyntaxAttribute available to target frameworks older than .NET 7.</Description>
+    <PackageIcon>icon.png</PackageIcon>
+    
+    <Authors>David Wake</Authors>
+    <Copyright>Copyright © David Wake 2022</Copyright>
+    <NeutralLanguage>en-AU</NeutralLanguage>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/daviddotcs/string-syntax-polyfill</RepositoryUrl>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <PackageProjectUrl>https://github.com/daviddotcs/string-syntax-polyfill</PackageProjectUrl>
+    <PackageReleaseNotes>See https://github.com/daviddotcs/string-syntax-polyfill/releases for release notes.</PackageReleaseNotes>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <None Include="..\README.source.md" Link="README.md" Pack="true" PackagePath="\README.md" />
+    <None Include="..\icon.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="@(Compile)">
+      <Pack>true</Pack>
+      <PackagePath>$(ContentTargetFolders)\cs\netstandard2.0\$(PackageId)\</PackagePath>
+    </Compile>
+    <EmbeddedResource Update="@(EmbeddedResource)">
+      <Pack>true</Pack>
+      <PackagePath>$(ContentTargetFolders)\any\any\$(PackageId)\</PackagePath>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Remove="@(PackageReference)" />
+
+    <None Include="StringSyntaxAttribute.cs" Pack="true" PackagePath="content\netstandard2.0\$(PackageId)\" />
+
+    <!-- Exclude from .NET 7 -->
+    <None Include="..\.nuget\_._" Pack="true" PackagePath="content\net7.0\" />
+    <None Include="..\.nuget\_._" Pack="true" PackagePath="$(ContentTargetFolders)\cs\net7.0\" />
+    
+    <None Include="StringSyntaxPolyfill.props" Pack="true" PackagePath="build\" />
+  </ItemGroup>
+
+  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
+
+  <Target Name="Compile" />
+  <Target Name="CopyFilesToOutputDirectory" />
+
+</Project>

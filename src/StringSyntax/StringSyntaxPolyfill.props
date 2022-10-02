@@ -1,0 +1,7 @@
+<Project>
+  <ItemGroup>
+    <Compile Update="@(Compile)">
+      <Visible Condition="'%(NuGetItemType)' == 'Compile' and '%(NuGetPackageId)' == 'StringSyntaxPolyfill'">false</Visible>
+    </Compile>
+  </ItemGroup>
+</Project>
