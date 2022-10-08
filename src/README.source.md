@@ -3,15 +3,15 @@
 [![NuGet Package](https://img.shields.io/nuget/v/StringSyntaxPolyfill.svg?style=for-the-badge&logo=nuget)](https://www.nuget.org/packages/StringSyntaxPolyfill)
 [![GitHub Release](https://img.shields.io/github/v/release/daviddotcs/string-syntax-polyfill?label=GitHub&logo=github&style=for-the-badge)](https://github.com/daviddotcs/string-syntax-polyfill/releases/latest)
 
-Makes [StringSyntaxAttribute](https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.codeanalysis.stringsyntaxattribute?view=net-7.0) available to target frameworks older than .NET 7. This enables IDE features such as syntax highlighting and code completion within strings, and Visual Studio currently supports `DateTimeFormat`, `Json`, and `Regex` as of version 17.3.5.
+Makes [StringSyntaxAttribute](https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.codeanalysis.stringsyntaxattribute?view=net-7.0) available to target frameworks older than .NET 7. This enables IDE features such as syntax highlighting and code completion within strings, and Visual Studio currently supports `DateTimeFormat`, `Json`, and `Regex` as of version 17.2.
 
 ## Compatibility
 
-Including projects must be compatible with .NET Standard 2.0 and use C# 8 or later. This means projects targeting the following should work:
+Including projects must be compatible with .NET Standard 1.0 and use C# 8 or later. This means projects targeting the following should work:
 
-* .NET/.NET Core 2.0 or greater
-* .NET Framework 4.6.1 or greater
-* .NET Standard 2.0 or greater
+* .NET/.NET Core 1.0 or greater
+* .NET Framework 4.5 or greater
+* .NET Standard 1.0 or greater
 
 ## Building the NuGet Package
 
