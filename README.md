@@ -9,6 +9,7 @@ Makes [StringSyntaxAttribute](https://learn.microsoft.com/en-us/dotnet/api/syste
 ## Table of Contents
 
 - [Compatibility](#compatibility)
+- [Alternatives](#alternatives)
 - [Building the NuGet Package](#building-the-nuget-package)
 
 ## Compatibility
@@ -18,6 +19,10 @@ Including projects must be compatible with .NET Standard 1.0 and use C# 8 or lat
 * .NET/.NET Core 1.0 or greater
 * .NET Framework 4.5 or greater
 * .NET Standard 1.0 or greater
+
+## Alternatives
+
+You might instead consider [PolySharp](https://github.com/Sergio0694/PolySharp) which uses a source generator to provide polyfills for `[StringSyntax]` among other types in order to enable various new C# language features on older runtimes.
 
 ## Building the NuGet Package
 
